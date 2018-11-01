@@ -1,6 +1,6 @@
-# Fano Web Framework Skeleton Application
+# Fano Web Framework REST API Skeleton Application
 
-Web application skeleton using Fano, Pascal web application framework
+REST API Web application skeleton using Fano, Pascal web application framework
 
 ## Requirement
 

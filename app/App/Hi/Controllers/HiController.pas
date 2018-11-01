@@ -11,7 +11,8 @@ interface
 
 uses
 
-    fano;
+    fano,
+    fpjson;
 
 type
 
@@ -29,10 +30,15 @@ implementation
           const request : IRequest;
           const response : IResponse
     ) : IResponse;
-    var strName : string;
+    var jsonObj : TJSONObject;
     begin
-        strName := request.getParsedBodyParam('name');
-        result := TJsonResponse.create(response.headers(), '{"name":"'+ strName +'"}');
+        jsonObj := TJSONObject.create();
+        try
+            jsonObj.add('Hello', 'Joko Widowo');
+            result := TJsonResponse.create(response.headers(), jsonObj.asJson);
+        finally
+            jsonObj.free();
+        end;
     end;
 
 end.
