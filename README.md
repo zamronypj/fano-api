@@ -24,11 +24,11 @@ Clone this repository
 
 `--recursive` is needed so git also pull [Fano](https://github.com/zamronypj/fano) repository.
 
-If you missing `--recursive` when you clone, you may find that `fano` directory is empty. In this case run
+If you are missing `--recursive` when you clone, you may find that `fano` directory is empty. In this case run
 
     $ git submodule update --init
 
-To update fano to its latest commit, run
+To update Fano to its latest commit, run
 
     $ git checkout master && git submodule foreach --recursive git pull origin master
 
@@ -36,9 +36,13 @@ Above command will checkout to `master` branch of this repository and pull lates
 
 Copy `*.cfg.sample` to `*.cfg`.
 Make adjustment as you need in `build.cfg`, `build.prod.cfg`, `build.dev.cfg`
-and run `build.sh` shell script.
+and run `build.sh` shell script (if you are on Windows, then `build.cmd`).
 
-Also copy `app/config/config.json.sample` to `app/config/config.json`.
+These `*.cfg` files contain some Free Pascal compiler switches that you can turn on/off to change how executable is compiled and generated. For complete
+explanation on available compiler switches, consult Free Pascal documentation.
+
+Also copy `app/config/config.json.sample` to `app/config/config.json` and edit
+configuration as needed. For example, you may need to change `baseUrl` to match your own base url so JavaScript or CSS stylesheets point to correct URL.
 
     $ cp app/config/config.json.sample app/config/config.json
     $ cp build.prod.cfg.sample build.prod.cfg
@@ -62,7 +66,7 @@ To build for different environment, set `BUILD_TYPE` environment variable.
 
     $ BUILD_TYPE=prod ./build.sh
 
-Build process will use compiler configuration defined in `fano/fano.cfg`, `build.cfg` and `build.prod.cfg`.
+Build process will use compiler configuration defined in `fano/fano.cfg`, `build.cfg` and `build.prod.cfg`. By default, `build.prod.cfg` contains some compiler switches that will aggressively optimize executable both in speed and size.
 
 #### Build for development environment
 
@@ -127,8 +131,9 @@ Depending on your server setup, for example, if  you use `.htaccess`, add follow
     RewriteRule ^(.*)$ app.cgi [L]
 </IfModule>
 ```
+and put `.htaccess` file in same directory as `app.cgi` file (i.e., in `app/public` directory).
 
-Which basically tells Apache to serve existing files/directories directly. For any non-existing files/directories, pass them to our application.
+Content of `.htaccess` basically tells Apache to serve existing files/directories directly. For any non-existing files/directories, pass them to our application.
 
 ### Simulate run on command line
 
@@ -153,8 +158,18 @@ This is similar to simulating browser requesting this page,for example,
 
     $ wget -O- http://[your fano app hostname]/test/test
 
-However, running using `tools/simulate.run.sh` allows you to view output of heaptrc
+However, running using `tools/simulate.run.sh` allows you to view output of `heaptrc`
 unit for detecting memory leak (if you enable `-gh` switch in `build.dev.cfg`).
+
+
+## Deployment
+
+You need to deploy only executable binary and any supporting files such as HTML templates, images, css stylesheets, application config.
+Any `pas` or `inc` files or shell scripts is not needed in deployment machine in order application to run.
+
+So for this repository, you will need to copy `public`, `Templates`, `config`
+and `storages` directories to your deployment machine. make sure that
+`storages` directory is writable by web server.
 
 ## Known Issues
 
@@ -169,15 +184,16 @@ When running `build.sh` script, you may encounter following warning:
 This is known issue between FreePascal and GNU Linker. See
 [FAQ: link.res syntax error, or "did you forget -T?"](https://www.freepascal.org/faq.var#unix-ld219)
 
-However this warning is minor and can be ignored as it does not affect output executable.
+However, this warning is minor and can be ignored. It does not affect output executable.
 
 ### Issue with unsynchronized compiled unit with unit source
 
 Sometime FreePascal can not compile your code because, for example, you deleted a
-unit source code (.pas) but old generated unit (.ppu, .o, .a files) still there. Solution is to remove those files.
+unit source code (.pas) but old generated unit (.ppu, .o, .a files) still there
+or when you switch between git branches. Solution is to remove those files.
 
-By default, generated compiled unit is in `bin/unit` directory.
-But do not delete `README.md` file inside this directory as it is not being ignored by git.
+By default, generated compiled units are in `bin/unit` directory.
+But do not delete `README.md` file inside this directory, as it is not being ignored by git.
 
 ```
 $ rm bin/unit/*.ppu
@@ -195,4 +211,10 @@ Following shell command will remove all files inside `bin/unit` directory except
 
 ### Windows user
 
-FreePascal supports Windows as target operating system, however, this repository is not yet tested on Windows and helper shell scripts are for bash shell.
+Free Pascal supports Windows as target operating system, however, this repository is not yet tested on Windows. To target Windows, in `build.cfg` replace
+compiler switch `-Tlinux` with `-Twin64` and uncomment line `#-WC` to
+become `-WC`.
+
+### Lazarus user
+
+While you can use Lazarus IDE, it is not mandatory tool. Any text editor for code editing (Atom, Visual Studio Code, Sublime, Vim etc) should suffice.
