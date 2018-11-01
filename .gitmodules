@@ -1,0 +1,3 @@
+[submodule "fano"]
+	path = fano
+	url = git@github.com:zamronypj/fano.git
