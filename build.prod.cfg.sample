@@ -1,3 +1,11 @@
+#------------------------------------------------------------
+# Fano Web Framework Skeleton Application (https://fano.juhara.id)
+#
+# @link      https://github.com/zamronypj/fano-app
+# @copyright Copyright (c) 2018 Zamrony P. Juhara
+# @license   https://github.com/zamronypj/fano-app/blob/master/LICENSE (GPL 3.0)
+#-------------------------------------------------------------
+
 #----------------------------------------------
 # User configuration for production build
 # Please see FreePascal Documentation for available
@@ -11,6 +19,7 @@
 
 #----------------------------------------------
 # Level 3 optimization
+# Other available switch -O1, -O2, -O4
 #----------------------------------------------
 -O3
 
@@ -21,6 +30,29 @@
 # It puts here just for completeness.
 #----------------------------------------------
 -Ooregvar
+
+#----------------------------------------------
+# Removing the calculation of dead values optimization
+# this optimization is included in -O4
+#----------------------------------------------
+-Oodeadvalues
+
+#----------------------------------------------
+# Use smart linking
+# Tell linker to only link symbols that your code
+# actually need to reduce executable size
+# @link: https://www.freepascal.org/docs-html/prog/progse30.html
+#----------------------------------------------
+-CX
+
+#----------------------------------------------
+# Link with smartlinked units
+# This is related to -CX switch above, If you enable
+# smart linking then smart linking process will only
+# be carried out if this switch is enable
+# @link: https://www.freepascal.org/docs-html/prog/progse30.html
+#----------------------------------------------
+-XX
 
 #----------------------------------------------
 # Strip all debug information and symbols

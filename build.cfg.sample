@@ -1,5 +1,14 @@
+#------------------------------------------------------------
+# Fano Web Framework Skeleton Application (https://fano.juhara.id)
+#
+# @link      https://github.com/zamronypj/fano-app
+# @copyright Copyright (c) 2018 Zamrony P. Juhara
+# @license   https://github.com/zamronypj/fano-app/blob/master/LICENSE (GPL 3.0)
+#-------------------------------------------------------------
+
 #----------------------------------------------
-# User configuration
+# User configuration that applies to both
+# development and production environment
 # Please see FreePascal Documentation for available
 # compiler configurations
 #----------------------------------------------
@@ -32,9 +41,6 @@
 #----------------------------------------------
 -Fu$USER_APP_DIR$/Dependencies
 -Fu$USER_APP_DIR$/Routes
--Fu$USER_APP_DIR$/App/Hello/Controllers
--Fu$USER_APP_DIR$/App/Hello/Controllers/Factories
--Fu$USER_APP_DIR$/App/Hello/Views
 -Fu$USER_APP_DIR$/App/Hi/Controllers
 -Fu$USER_APP_DIR$/App/Hi/Controllers/Factories
 #-Fu$USER_APP_DIR$/path/to/other/units
@@ -45,7 +51,7 @@
 # USER_APP_DIR is contains user application base directory
 #----------------------------------------------
 -Fi$USER_APP_DIR$/Dependencies
--Fi$USER_APP_DIR$/Routes/home
+-Fi$USER_APP_DIR$/Routes/Hi
 #-Fu$USER_APP_DIR$/path/to/other/include/files
 
 #----------------------------------------------
