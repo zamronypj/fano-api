@@ -1,0 +1,13 @@
+app/config/config.json
+app/public/.htaccess
+app/public/app.cgi
+app/cgi-bin/app.cgi
+app/storages/logs/*
+!app/storages/logs/README.md
+build.cfg
+build.dev.cfg
+build.prod.cfg
+bin/*
+!bin/README.md
+!bin/unit/README.md
+fp.dir
