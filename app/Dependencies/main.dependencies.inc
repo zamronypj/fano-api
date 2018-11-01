@@ -48,3 +48,8 @@ container.add('logger',
         (container.get('config') as IAppConfiguration).getString('logFile')
     )
 );
+
+{-----------------------------------------------
+  or to disable logging just use TNullLogger
+------------------------------------------------}
+//container.add('logger', TNullLoggerFactory.create());
