@@ -17,7 +17,15 @@ uses
 type
 
     THiController = class(TRouteHandler, IDependency)
+    private
+        logger : ILogger;
     public
+        constructor create(
+            const beforeMiddlewares : IMiddlewareCollection;
+            const afterMiddlewares : IMiddlewareCollection;
+            const loggerInst : ILogger
+        );
+        destructor destroy(); override;
         function handleRequest(
             const request : IRequest;
             const response : IResponse
@@ -25,6 +33,22 @@ type
     end;
 
 implementation
+
+    constructor THiController.create(
+        const beforeMiddlewares : IMiddlewareCollection;
+        const afterMiddlewares : IMiddlewareCollection;
+        const loggerInst : ILogger
+    );
+    begin
+        inherited create(beforeMiddlewares, afterMiddlewares);
+        logger := loggerInst;
+    end;
+
+    destructor THiController.destroy();
+    begin
+        inherited destroy();
+        logger := nil;
+    end;
 
     function THiController.handleRequest(
           const request : IRequest;
@@ -36,6 +60,7 @@ implementation
         try
             jsonObj.add('Hello', 'Joko Widowo');
             result := TJsonResponse.create(response.headers(), jsonObj.asJson);
+            logger.info('handle rest api request');
         finally
             jsonObj.free();
         end;

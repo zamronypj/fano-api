@@ -39,3 +39,12 @@ container.add(
         container.get('router') as IRouteMatcher
     )
 );
+
+{-----------------------------------------------
+  register application file logger
+------------------------------------------------}
+container.add('logger',
+    TFileLoggerFactory.create(
+        (container.get('config') as IAppConfiguration).getString('logFile')
+    )
+);

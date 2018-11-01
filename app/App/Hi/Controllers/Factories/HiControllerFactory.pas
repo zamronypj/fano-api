@@ -29,7 +29,8 @@ uses
         try
             result := THiController.create(
                 routeMiddlewares.getBefore(),
-                routeMiddlewares.getAfter()
+                routeMiddlewares.getAfter(),
+                container.get('logger') as ILogger
             );
         finally
             routeMiddlewares := nil;
