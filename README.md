@@ -6,7 +6,7 @@ REST API Web application skeleton using Fano, Pascal web application framework
 
 - [Free Pascal](https://www.freepascal.org/) >= 3.0
 - Web Server (Apache, nginx)
-- [Fano Web Framework](https://github.com/zamronypj/fano)
+- [Fano Web Framework](https://github.com/fanoframework/fano)
 
 ## Installation
 
@@ -20,9 +20,9 @@ If you see something like `Free Pascal Compiler version 3.0.4`,  you are good to
 
 Clone this repository
 
-    $ git clone git@github.com:zamronypj/fano-app.git --recursive
+    $ git clone git@github.com:fanoframework/fano-app.git --recursive
 
-`--recursive` is needed so git also pull [Fano](https://github.com/zamronypj/fano) repository.
+`--recursive` is needed so git also pull [Fano](https://github.com/fanoframework/fano) repository.
 
 If you are missing `--recursive` when you clone, you may find that `fano` directory is empty. In this case run
 
@@ -32,7 +32,7 @@ To update Fano to its latest commit, run
 
     $ git checkout master && git submodule foreach --recursive git pull origin master
 
-Above command will checkout to `master` branch of this repository and pull latest update from `master` branch of [Fano](https://github.com/zamronypj/fano) repository.
+Above command will checkout to `master` branch of this repository and pull latest update from `master` branch of [Fano](https://github.com/fanoframework/fano) repository.
 
 Copy `*.cfg.sample` to `*.cfg`.
 Make adjustment as you need in `build.cfg`, `build.prod.cfg`, `build.dev.cfg`
