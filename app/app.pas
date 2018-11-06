@@ -1,5 +1,5 @@
 (*!------------------------------------------------------------
- * Fano Web Framework Skeleton Application (https://fano.juhara.id)
+ * Fano Web Framework Skeleton Application (https://fanoframework.github.io)
  *
  * @link      https://github.com/zamronypj/fano-app
  * @copyright Copyright (c) 2018 Zamrony P. Juhara
