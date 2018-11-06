@@ -7,7 +7,7 @@ app/storages/logs/*
 build.cfg
 build.dev.cfg
 build.prod.cfg
-bin/*
+bin/unit/*
 !bin/README.md
 !bin/unit/README.md
 fp.dir
