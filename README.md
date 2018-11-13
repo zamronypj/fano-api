@@ -207,7 +207,7 @@ Following shell command will remove all files inside `bin/unit` directory except
 
     $ find bin/unit ! -name 'README.md' -type f -exec rm -f {} +
 
-`tools/clear.compiled.units.sh` script is provided to simplify this task.
+`tools/clean.sh` script is provided to simplify this task.
 
 ### Windows user
 
