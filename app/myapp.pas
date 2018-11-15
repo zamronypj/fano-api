@@ -40,9 +40,9 @@ uses
     end;
 
     procedure TMyApp.buildRoutes(const container : IDependencyContainer);
-    var router : IRouteCollection;
+    var router : IRouter;
     begin
-        router := container.get('router') as IRouteCollection;
+        router := container.get('router') as IRouter;
         try
             {$INCLUDE Routes/Hi/routes.inc}
         finally
