@@ -14,18 +14,18 @@ app/config/config.json
 #----------------------------------------------
 # Ignore Apache any configuration
 #----------------------------------------------
-app/public/.htaccess
+public/.htaccess
 
 #----------------------------------------------
 # Ignore generated binary executable
 #----------------------------------------------
-app/public/app.cgi
-app/cgi-bin/app.cgi
+public/app.cgi
+cgi-bin/app.cgi
 
 #----------------------------------------------
 # Ignore generated log files
 #----------------------------------------------
-app/storages/logs/*
+storages/logs/*
 
 #----------------------------------------------
 # Do not ignore README.md
@@ -33,7 +33,7 @@ app/storages/logs/*
 # app/storages/logs directory when this repository
 # is cloned.
 #----------------------------------------------
-!app/storages/logs/README.md
+!storages/logs/README.md
 
 #----------------------------------------------
 # Ignore compiler switches configurations

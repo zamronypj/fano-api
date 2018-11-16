@@ -56,7 +56,7 @@ configuration files. Following shell command is similar to command above.
     $ ./tools/config.setup.sh
     $ ./build.sh
 
-By default, it will output binary executable in `app/public` directory.
+By default, it will output binary executable in `public` directory.
 
 ### Build for different environment
 
@@ -79,7 +79,7 @@ If `BUILD_TYPE` environment variable is not set, production environment will be 
 ## Change executable output directory
 
 Compilation will output executable to directory defined in `EXEC_OUTPUT_DIR`
-environment variable. By default is `app/public` directory.
+environment variable. By default is `public` directory.
 
     $ EXEC_OUTPUT_DIR=/path/to/public/dir ./build.sh
 
