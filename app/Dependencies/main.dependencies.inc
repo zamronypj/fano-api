@@ -12,7 +12,7 @@
 container.add(
     'config',
     TJsonFileConfigFactory.create(
-        extractFileDir(getCurrentDir()) + '/config/config.json'
+        extractFileDir(getCurrentDir()) + '/app/config/config.json'
     )
 );
 
