@@ -14,7 +14,7 @@ SET %CURRDIR%=%cd%
 
 REM change current working dir, to simulate how cgi
 REM app executed by web server
-cd app\public
+cd public
 
 IF NOT DEFINED REQUEST_METHOD (SET REQUEST_METHOD="GET")
 IF NOT DEFINED REQUEST_URI (SET REQUEST_URI="/")

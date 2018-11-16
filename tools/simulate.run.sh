@@ -15,7 +15,7 @@ CURRDIR=$PWD
 
 # change current working dir, to simulate how cgi
 # app executed by web server
-cd app/public
+cd public
 
 if [ -z "$REQUEST_METHOD" ]; then
     export REQUEST_METHOD="GET"
