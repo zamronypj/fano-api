@@ -37,4 +37,10 @@ if [[ -z "${SOURCE_PROGRAM_NAME}" ]]; then
 SOURCE_PROGRAM_NAME="app.pas"
 fi
 
-fpc @fano/fano.cfg @build.cfg ${USER_APP_DIR}/${SOURCE_PROGRAM_NAME}
+export FPC="fpc"
+
+if [[ -n "${FPC_BIN}" ]]; then
+FPC="${FPC_BIN}"
+fi
+
+${FPC} @fano/fano.cfg @build.cfg ${USER_APP_DIR}/${SOURCE_PROGRAM_NAME}
