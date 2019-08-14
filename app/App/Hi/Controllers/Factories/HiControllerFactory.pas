@@ -28,8 +28,7 @@ uses
         routeMiddlewares := container.get('routeMiddlewares') as IMiddlewareCollectionAware;
         try
             result := THiController.create(
-                routeMiddlewares.getBefore(),
-                routeMiddlewares.getAfter(),
+                routeMiddlewares,
                 container.get('logger') as ILogger
             );
         finally

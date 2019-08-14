@@ -21,8 +21,7 @@ type
         logger : ILogger;
     public
         constructor create(
-            const beforeMiddlewares : IMiddlewareCollection;
-            const afterMiddlewares : IMiddlewareCollection;
+            const aMiddlewares : IMiddlewareCollectionAware;
             const loggerInst : ILogger
         );
         destructor destroy(); override;
@@ -35,12 +34,11 @@ type
 implementation
 
     constructor THiController.create(
-        const beforeMiddlewares : IMiddlewareCollection;
-        const afterMiddlewares : IMiddlewareCollection;
+        const aMiddlewares : IMiddlewareCollectionAware;
         const loggerInst : ILogger
     );
     begin
-        inherited create(beforeMiddlewares, afterMiddlewares);
+        inherited create(aMiddlewares);
         logger := loggerInst;
     end;
 
