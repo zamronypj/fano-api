@@ -22,8 +22,8 @@ begin
      * @author Zamrony P. Juhara <zamronypj@yahoo.com>
      *------------------------------------------------*)
     appInstance := TMyApp.create(
-        TDependencyContainer.create(TDependencyList.create()),
-        TCGIEnvironment.create(),
+        nil,
+        nil,
         TAjaxErrorHandler.create()
     );
     appInstance.run();

@@ -15,11 +15,10 @@ uses
 
 type
 
-    TMyApp = class(TFanoWebApplication)
+    TMyApp = class(TSimpleWebApplication)
     protected
         procedure buildDependencies(const container : IDependencyContainer); override;
         procedure buildRoutes(const container : IDependencyContainer); override;
-        function initDispatcher(const container : IDependencyContainer) : IDispatcher; override;
     end;
 
 implementation
@@ -32,7 +31,6 @@ uses
         controllers factory
     ----------------------------------- *}
     HiControllerFactory;
-
 
     procedure TMyApp.buildDependencies(const container : IDependencyContainer);
     begin
@@ -48,10 +46,5 @@ uses
         finally
             router := nil;
         end;
-    end;
-
-    function TMyApp.initDispatcher(const container : IDependencyContainer) : IDispatcher;
-    begin
-        result := container.get('dispatcher') as IDispatcher;
     end;
 end.

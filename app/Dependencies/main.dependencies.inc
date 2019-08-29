@@ -25,22 +25,6 @@ container.add(
 container.factory('routeMiddlewares', TNullMiddlewareCollectionAwareFactory.create());
 
 {-----------------------------------------------
-  register application simple router instance
-  which does not support middleware
-------------------------------------------------}
-container.add('router', TSimpleRouterFactory.create());
-
-{-----------------------------------------------
-  setup application request dispatcher
-------------------------------------------------}
-container.add(
-    'dispatcher',
-    TSimpleDispatcherFactory.create(
-        container.get('router') as IRouteMatcher
-    )
-);
-
-{-----------------------------------------------
   register application file logger
 ------------------------------------------------}
 container.add('logger',
