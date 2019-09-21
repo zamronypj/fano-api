@@ -23,17 +23,8 @@ uses
     HiController;
 
     function THiControllerFactory.build(const container : IDependencyContainer) : IDependency;
-    var routeMiddlewares : IMiddlewareCollectionAware;
     begin
-        routeMiddlewares := container.get('routeMiddlewares') as IMiddlewareCollectionAware;
-        try
-            result := THiController.create(
-                routeMiddlewares,
-                container.get('logger') as ILogger
-            );
-        finally
-            routeMiddlewares := nil;
-        end;
+        result := THiController.create(container.get('logger') as ILogger);
     end;
 
 end.
