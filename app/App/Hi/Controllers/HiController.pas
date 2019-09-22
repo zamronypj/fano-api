@@ -16,43 +16,36 @@ uses
 
 type
 
-    THiController = class(TRouteHandler, IDependency)
+    THiController = class(TAbstractController)
     private
         logger : ILogger;
     public
-        constructor create(
-            const beforeMiddlewares : IMiddlewareCollection;
-            const afterMiddlewares : IMiddlewareCollection;
-            const loggerInst : ILogger
-        );
+        constructor create(const loggerInst : ILogger);
         destructor destroy(); override;
         function handleRequest(
             const request : IRequest;
-            const response : IResponse
+            const response : IResponse;
+            const args : IRouteArgsReader
         ) : IResponse; override;
     end;
 
 implementation
 
-    constructor THiController.create(
-        const beforeMiddlewares : IMiddlewareCollection;
-        const afterMiddlewares : IMiddlewareCollection;
-        const loggerInst : ILogger
-    );
+    constructor THiController.create(const loggerInst : ILogger);
     begin
-        inherited create(beforeMiddlewares, afterMiddlewares);
         logger := loggerInst;
     end;
 
     destructor THiController.destroy();
     begin
-        inherited destroy();
         logger := nil;
+        inherited destroy();
     end;
 
     function THiController.handleRequest(
-          const request : IRequest;
-          const response : IResponse
+        const request : IRequest;
+        const response : IResponse;
+        const args : IRouteArgsReader
     ) : IResponse;
     var jsonObj : TJSONObject;
     begin

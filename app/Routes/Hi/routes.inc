@@ -5,4 +5,4 @@
  * @copyright Copyright (c) 2018 Zamrony P. Juhara
  * @license   https://github.com/fanoframework/fano-api/blob/master/LICENSE (GPL 2.0)
  *------------------------------------------------------------- *)
-router.get('/', container.get('hiController') as IRouteHandler);
+router.get('/', container.get('hiController') as IRequestHandler);
