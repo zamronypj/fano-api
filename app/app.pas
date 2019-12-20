@@ -21,10 +21,9 @@ begin
      *
      * @author Zamrony P. Juhara <zamronypj@yahoo.com>
      *------------------------------------------------*)
-    appInstance := TMyApp.create(
-        nil,
-        nil,
-        TAjaxErrorHandler.create()
+    appInstance := TCgiWebApplication.create(
+        TMyAppServiceProvider.create(),
+        TMyAppRoutes.create()
     );
     appInstance.run();
 end.

@@ -15,10 +15,19 @@ uses
 
 type
 
-    TMyApp = class(TSimpleWebApplication)
+    TMyAppServiceProvider = class(TBasicAppServiceProvider)
     protected
-        procedure buildDependencies(const container : IDependencyContainer); override;
-        procedure buildRoutes(const container : IDependencyContainer); override;
+        function buildErrorHandler() : IErrorHandler; override;
+    public
+        procedure register(const container : IDependencyContainer); override;
+    end;
+
+    TMyAppRoutes = class(TRouteBuilder)
+    public
+        procedure buildRoutes(
+            const container : IDependencyContainer;
+            const router : IRouter
+        ); override;
     end;
 
 implementation
@@ -32,19 +41,21 @@ uses
     ----------------------------------- *}
     HiControllerFactory;
 
-    procedure TMyApp.buildDependencies(const container : IDependencyContainer);
+    function TMyAppServiceProvider.buildErrorHandler() : IErrorHandler;
+    begin
+        result := TAjaxErrorHandler.create();
+    end;
+
+    procedure TMyAppServiceProvider.register(const container : IDependencyContainer);
     begin
         {$INCLUDE Dependencies/dependencies.inc}
     end;
 
-    procedure TMyApp.buildRoutes(const container : IDependencyContainer);
-    var router : IRouter;
+    procedure TMyAppRoutes.buildRoutes(
+        const container : IDependencyContainer;
+        const router : IRouter
+    );
     begin
-        router := container.get('router') as IRouter;
-        try
-            {$INCLUDE Routes/Hi/routes.inc}
-        finally
-            router := nil;
-        end;
+        {$INCLUDE Routes/Hi/routes.inc}
     end;
 end.
