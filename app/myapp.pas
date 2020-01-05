@@ -17,7 +17,10 @@ type
 
     TMyAppServiceProvider = class(TBasicAppServiceProvider)
     protected
-        function buildErrorHandler() : IErrorHandler; override;
+        function buildErrorHandler(
+            const ctnr : IDependencyContainer;
+            const config : IAppConfiguration
+        ) : IErrorHandler; override;
     public
         procedure register(const container : IDependencyContainer); override;
     end;
@@ -41,7 +44,10 @@ uses
     ----------------------------------- *}
     HiControllerFactory;
 
-    function TMyAppServiceProvider.buildErrorHandler() : IErrorHandler;
+    function TMyAppServiceProvider.buildErrorHandler(
+        const ctnr : IDependencyContainer;
+        const config : IAppConfiguration
+    ) : IErrorHandler;
     begin
         result := TAjaxErrorHandler.create();
     end;
