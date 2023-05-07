@@ -13,7 +13,7 @@
 
 
 if [[ -z "${FANO_DIR}" ]]; then
-export FANO_DIR="fano"
+export FANO_DIR="vendor/fano"
 fi
 
 if [[ -z "${BUILD_TYPE}" ]]; then
@@ -21,7 +21,7 @@ export BUILD_TYPE="prod"
 fi
 
 if [[ -z "${USER_APP_DIR}" ]]; then
-export USER_APP_DIR="app"
+export USER_APP_DIR="src"
 fi
 
 if [[ -z "${UNIT_OUTPUT_DIR}" ]]; then
@@ -44,4 +44,4 @@ if [[ -z "${FPC_BIN}" ]]; then
 export FPC_BIN="fpc"
 fi
 
-${FPC_BIN} @fano/fano.cfg @build.cfg ${USER_APP_DIR}/${SOURCE_PROGRAM_NAME}
+${FPC_BIN} @vendor/fano/fano.cfg @build.cfg ${USER_APP_DIR}/${SOURCE_PROGRAM_NAME}

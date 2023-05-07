@@ -10,7 +10,7 @@ REM------------------------------------------------------
 REM Scripts to setup configuration files
 REM------------------------------------------------------
 
-copy app\config\config.json.sample app\config\config.json
+copy src\config\config.json.sample src\config\config.json
 copy build.prod.cfg.sample build.prod.cfg
 copy build.dev.cfg.sample build.dev.cfg
 copy build.cfg.sample build.cfg
